@@ -19,6 +19,12 @@ class TestPesistentCache(unittest.TestCase):
             except FileNotFoundError:
                 pass
 
+    def test_cache_is_persistent(self):
+        self.cache["name"] = "John Doe"
+        del self.cache
+        cache = pcache.PersistentCache(filename=self.filename)
+        self.assertEqual(cache["name"], "John Doe")
+
     def test_add_key(self):
         name = "John Doe"
         self.cache["name"] = name

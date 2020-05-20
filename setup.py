@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="pcache",
-    version="0.0.2",
+    version="0.0.3",
     author="Pallab Pain",
     author_email="pallabkumarpain@gmail.com",
     description="A simple implementation of Persistent Caching",
