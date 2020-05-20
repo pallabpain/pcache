@@ -51,7 +51,8 @@ class TestPesistentCache(unittest.TestCase):
         self.assertEqual(str(self.cache), expected)
 
     def test_cache_items(self):
-        expected = [("name", "John Doe"), ("age", 27)]
+        expected = [("age", 27), ("name", "John Doe")]
         self.cache["name"] = "John Doe"
         self.cache["age"] = 27
-        self.assertEqual(self.cache.items(), expected)
+        self.assertEqual(
+            sorted(self.cache.items(), key=lambda x: x[0]), expected)
