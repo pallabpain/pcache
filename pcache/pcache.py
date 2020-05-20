@@ -2,11 +2,17 @@ import shelve
 import threading
 import time
 
+
 class PersistentCache():
+    """A simple implementation of persistent cache
+
+    Parameters:
+        filename: File for storing the cache data
+    """
     __EXPIRE_KEY = "__expire_list"
     __RESTRICTED_KEYS = (__EXPIRE_KEY,)
 
-    def __init__(self, filename="pcache"):
+    def __init__(self, filename):
         self.__filename = filename
         self.__wlock = threading.Lock()
         with shelve.open(self.__filename) as cache:
@@ -57,20 +63,3 @@ class PersistentCache():
                     "timestamp": time.time()
                 }
                 cache[self.__EXPIRE_KEY] = expire_list
-
-
-if __name__ == "__main__":
-    cache = PersistentCache()
-    cache["name"] = "Pallab"
-    cache["age"] = 27
-    print(cache["name"])
-    print(cache["age"])
-    print(cache["country"])
-    print(cache)
-    print(cache.items())
-    for k, v in cache.items():
-        print(k, v)
-    del(cache["name"])
-    cache.expire("age", ttl=1)
-    time.sleep(4)
-    print(cache["__expire_list"])

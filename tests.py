@@ -7,7 +7,8 @@ import time
 class TestPesistentCache(unittest.TestCase):
 
     def setUp(self):
-        self.cache = pcache.PersistentCache()
+        self.filename = "testcache"
+        self.cache = pcache.PersistentCache(filename=self.filename)
 
     def test_add_key(self):
         name = "John Doe"
@@ -31,4 +32,4 @@ class TestPesistentCache(unittest.TestCase):
         self.assertIsNone(self.cache["count"])
 
     def tearDown(self):
-        os.remove("./pcache.db")
+        os.remove(self.filename + ".db")
