@@ -11,7 +11,7 @@ setup(
     description="A simple implementation of Persistent Caching",
     long_description=long_description,
     platforms="UNIX",
-    url="",
+    url="https://github.com/pallabpain/pcache.git",
     package_dir="pcache",
     keywords=["cache", "persistent cache"],
     classifiers=[
