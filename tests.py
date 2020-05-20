@@ -32,4 +32,10 @@ class TestPesistentCache(unittest.TestCase):
         self.assertIsNone(self.cache["count"])
 
     def tearDown(self):
-        os.remove(self.filename + ".db")
+        try:
+            os.remove(self.filename + ".db")
+        except FileNotFoundError:
+            try:
+                os.remove(self.filename)
+            except FileNotFoundError:
+                pass
