@@ -50,11 +50,20 @@ class PersistentCache():
         return "{}".format({k: v for k, v in self.items()})
 
     def items(self):
+        """Get a list of (key, value) tuples"""
         with shelve.open(self.__filename) as cache:
             return [(k, cache[k]) for k in cache.keys()
                     if self.__getitem__(k)]
 
     def expire(self, key, ttl=10):
+        """Expire a key after a certain interval
+
+        Parameters:
+            key: Key to expire
+            ttl: Time to live (seconds)
+        """
+        if not isinstance(ttl, int):
+            raise TypeError("`ttl` has to be int")
         with self.__wlock:
             with shelve.open(self.__filename) as cache:
                 expire_list = cache[self.__EXPIRE_KEY]
