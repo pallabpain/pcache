@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.com/pallabpain/pcache.svg?branch=master)](https://travis-ci.com/pallabpain/pcache)
 [![Python](https://img.shields.io/pypi/pyversions/pcache)](https://pypi.org/project/persistent)
 ![GitHub](https://img.shields.io/github/license/pallabpain/pcache)
+[![CodeFactor](https://www.codefactor.io/repository/github/pallabpain/pcache/badge)](https://www.codefactor.io/repository/github/pallabpain/pcache)
 
 pcache is simple Python 3 implementation of persistent cache.
 
